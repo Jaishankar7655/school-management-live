@@ -149,6 +149,16 @@ export default defineConfig(({ mode }) => {
     build: {
       outDir: 'dist',
       sourcemap: false,
+      chunkSizeWarningLimit: 1200,
+      rollupOptions: {
+        output: {
+          manualChunks: {
+            'vendor-react': ['react', 'react-dom', 'react-router-dom'],
+            'vendor-charts': ['recharts'],
+            'vendor-icons': ['react-icons'],
+          },
+        },
+      },
     },
   };
 });
